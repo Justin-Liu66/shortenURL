@@ -14,9 +14,8 @@ router.post('/shortenURL', (req, res) => {
 
   const inputURL = req.body.initURL
 
-  //bug: 將前端表單驗證取消來驗證此功能，發現導不回去首頁
   if (!inputURL) {
-    return redirect('/')
+    return res.redirect('/')
   }
 
   URL.findOne({ initURL: inputURL })
@@ -43,20 +42,22 @@ router.post('/shortenURL', (req, res) => {
 })
 
 //redirect 
-router.get('/:inputShortURL', (req, res) => {
-
-  const { shortURL } = req.params
-
+router.get("/:inputShortURL", (req, res) => {
+  //debug 3: console.log(req) > 裡面會有三個params
+  const shortURL = req.params.inputShortURL
+  //debug 2: console.log(shortURL) > shortURL, initURL, favicon.ico
   return URL.findOne({ shortURL })
 
     .lean()
     .then(data => {
-
+      //debug 1: console.log(data) > 出現三筆data
       if (!data) {
         res.send("oops! can not find the url")
 
         //bug: 導不過去initURL(原始網站)
-      } else { res.redirect(data.initURL) }
+      } else {
+        res.redirect(data.initURL)
+      }
     })
     .catch(error => console.log(error))
 

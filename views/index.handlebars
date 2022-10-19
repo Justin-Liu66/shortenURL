@@ -21,13 +21,15 @@
 </div>
 <!--homepage-->
 {{else}}
-<form action="/shortenURL" method="POST" class="mt-5">
-  <div class="mb-3">
-    <label for="initURL" class="form-label">URL</label>
-    <input type="string" class="form-control" id="initURL" name="initURL" placeholder="input URL here"
+<form action="/shortenURL" method="post" class="" style="margin-top: 100px">
+  <div class="mb-3 d-flex flex-column align-items-center">
+    <input type="string" class="form-control w-25 text-center" id="initURL" name="initURL" placeholder="input URL here"
       aria-describedby="">
   </div>
-  <button type="submit" class="btn btn-primary">Shorten</button>
+  <div class="button-container d-flex justify-content-center">
+    <button type="submit" class="btn btn-outline-success">Shorten</button>
+  </div>
+
 </form>
 {{/if}}
 {{/if}}
