@@ -1,3 +1,26 @@
+<!-- situation: when input URL was transformed before -->
+{{#if data}}
+<div class="result">
+  <p>
+    The input URL: <b>{{inputURL}}</b> was transformed before!!
+  </p>
+  <h2>
+    Here is the shortened URL = <b>{{origin}}/{{shortURL}}</b>
+  </h2>
+</div>
+{{else}}
+<!-- situation: when input URL has been transformed successfully -->
+{{#if randomShortURL}}
+<div class="result">
+  <p>
+    The input URL: <b>{{inputURL}}</b> has been transformed successfully!!
+  </p>
+  <h2>
+    Here is the shortened URL = <b>{{origin}}/{{randomShortURL}}</b>
+  </h2>
+</div>
+<!--homepage-->
+{{else}}
 <form action="/shortenURL" method="POST" class="mt-5">
   <div class="mb-3">
     <label for="initURL" class="form-label">URL</label>
@@ -6,3 +29,5 @@
   </div>
   <button type="submit" class="btn btn-primary">Shorten</button>
 </form>
+{{/if}}
+{{/if}}

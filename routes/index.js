@@ -26,7 +26,7 @@ router.post('/shortenURL', (req, res) => {
       //if the input URL has been shortened before
       if (data) {
 
-        res.render('success', { data, inputURL, origin: req.headers.origin, shortURL: data.shortURL })
+        res.render('index', { data, inputURL, origin: req.headers.origin, shortURL: data.shortURL })
 
         //if never been shortened before
       } else {
@@ -35,7 +35,7 @@ router.post('/shortenURL', (req, res) => {
         //需檢查新產生的shortURL是否與database中的重複
         URL.create({ initURL: inputURL, shortURL: randomShortURL })
           .then(
-            res.render('success', { inputURL, origin: req.headers.origin, randomShortURL })
+            res.render('index', { inputURL, origin: req.headers.origin, randomShortURL })
           )
       }
     })
