@@ -1,0 +1,23 @@
+<!-- situation 1: when input URL was transformed before -->
+{{#if data}}
+<div class="result">
+  <p>
+    The input URL: <b>{{inputURL}}</b> was transformed before!!
+  </p>
+  <h2>
+    Here is the shortened URL = <b>{{origin}}/{{shortURL}}</b>
+  </h2>
+</div>
+{{/if}}
+
+<!-- situation 2: when input URL has been transformed successfully -->
+{{#if randomShortURL}}
+<div class="result">
+  <p>
+    The input URL: <b>{{inputURL}}</b> has been transformed successfully!!
+  </p>
+  <h2>
+    Here is the shortened URL = <b>{{origin}}/{{randomShortURL}}</b>
+  </h2>
+</div>
+{{/if}}
