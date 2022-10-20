@@ -9,26 +9,35 @@
   </h2>
 </div>
 {{else}}
+
 <!-- situation: when input URL has been transformed successfully -->
 {{#if randomShortURL}}
 <div class="result text-center" style="margin-top: 100px;">
-  <h3> 
+  <h3>
     <b style="color: green">{{inputURL}}</b> has been transformed successfully!!
   </h3>
   <h2>
-    The shortened URL = <b>{{origin}}/{{randomShortURL}}</b>
+    The shortened URL = <b style="color: green">{{origin}}/{{randomShortURL}}</b>
   </h2>
 </div>
+
 <!--homepage-->
 {{else}}
 <form action="/shortenURL" method="post" class="" style="margin-top: 100px">
   <div class="mb-3 d-flex flex-column align-items-center">
-    <input type="string" class="form-control w-25 text-center" id="initURL" name="initURL" placeholder="input URL here"
-      aria-describedby="">
+    <input type="string" class="form-control w-25 text-center" id="initURL" name="initURL" value="{{inputURL}}"
+      placeholder="input URL here" aria-describedby="" required>
   </div>
   <div class="button-container d-flex justify-content-center">
-    <button type="submit" class="btn btn-outline-success">Shorten</button>
+    <button type="submit" class="btn btn-outline-primary">Shorten</button>
   </div>
+
+  <!-- situation: when input URL is not fully-qualified -->
+  {{#if obj}}
+  <div class="text-center" style="margin-top: 50px">
+    <h1 style="color: #dc143c">Oops! Please input fully-qualified URL.</h1>
+    <h1><b style="color: black">(https://... ,etc)</b></h1>
+    {{/if}}
 
 </form>
 {{/if}}

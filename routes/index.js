@@ -1,8 +1,8 @@
 const express = require('express')
-const router = express.Router()
-
 const URL = require('../models/URL')
 const shortURL = require('../generate_shortURL')
+
+const router = express.Router()
 
 //homepage
 router.get('/', (req, res) => {
@@ -14,8 +14,12 @@ router.post('/shortenURL', (req, res) => {
 
   const inputURL = req.body.initURL
 
-  if (!inputURL) {
-    return res.redirect('/')
+  //input驗證: 當輸入input的網址不含https等protocal則顯示提醒字樣(包含使用者未輸入任何字就按下按钮的情況)
+  const obj = require('url').parse(inputURL)
+  const urlProtocol = obj.protocol
+  if (!urlProtocol) {
+    res.render('index', { obj, inputURL })
+    return
   }
 
   URL.findOne({ initURL: inputURL })
@@ -43,18 +47,16 @@ router.post('/shortenURL', (req, res) => {
 
 //redirect 
 router.get("/:inputShortURL", (req, res) => {
-  //debug 3: console.log(req) > 裡面會有三個params
+
   const shortURL = req.params.inputShortURL
-  //debug 2: console.log(shortURL) > shortURL, initURL, favicon.ico
+
   return URL.findOne({ shortURL })
 
     .lean()
     .then(data => {
-      //debug 1: console.log(data) > 出現三筆data
-      if (!data) {
-        res.send("oops! can not find the url")
 
-        //bug: 導不過去initURL(原始網站)
+      if (!data) {
+        res.render("error", { host: req.headers.host, shortURL })
       } else {
         res.redirect(data.initURL)
       }
