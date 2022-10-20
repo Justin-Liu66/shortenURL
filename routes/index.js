@@ -1,17 +1,13 @@
 const express = require('express')
 const URL = require('../models/URL')
-
+const root = require('./modules/root')
 
 const router = express.Router()
 
-const home = require('./modules/home')
+//root directory
+router.use('/', root)
 
-//home page
-router.use('/', home)
-
-
-
-//redirect 
+//redirect
 router.get("/:inputShortURL", (req, res) => {
 
   const shortURL = req.params.inputShortURL
