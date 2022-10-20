@@ -4,10 +4,9 @@ const shortURL = require('../utils/generate_shortURL')
 
 const router = express.Router()
 
-//homepage
-router.get('/', (req, res) => {
-  res.render('index')
-})
+const home = require('./modules/home')
+
+router.use('/', home)
 
 //CREATE
 router.post('/shortenURL', (req, res) => {
