@@ -1,23 +1,45 @@
+<!-- copy function -->
+<script>
+  function copy() {
+    const copyText = document.getElementById("shortened-url")
+    console.log(copyText)
+    copyText.select();
+    copyText.setSelectionRange(0, 99999)
+
+    navigator.clipboard.writeText(copyText.value);
+
+    alert("Copied the url: " + copyText.value)
+  }
+</script>
+
+
 <!-- situation: when input URL was transformed before -->
 {{#if data}}
 <div class="result text-center" style="margin-top: 100px;">
-  <h3>
+  <h3 style="margin-bottom: 30px">
     <b style="color: green">{{inputURL}}</b> was transformed before!!
   </h3>
   <h2>
-    The shortened URL = <b style="color: green">{{origin}}/{{shortURL}}</b>
+    <b>The shortened URL =</b>
+    <input type="text" value="{{origin}}/{{shortURL}}" id="shortened-url" class="text-center w-50"
+      style="color: #0ABAB5; border: 1px solid #0ABAB5; border-radius: 10px">
+    <button class="btn btn-outline-success" onclick="copy()">Copy</button>
   </h2>
 </div>
+
 {{else}}
 
 <!-- situation: when input URL has been transformed successfully -->
 {{#if randomShortURL}}
 <div class="result text-center" style="margin-top: 100px;">
-  <h3>
+  <h3 style="margin-bottom: 30px">
     <b style="color: green">{{inputURL}}</b> has been transformed successfully!!
   </h3>
   <h2>
-    The shortened URL = <b style="color: green">{{origin}}/{{randomShortURL}}</b>
+    <b>The shortened URL =</b>
+    <input type="text" value="{{origin}}/{{randomShortURL}}" id="shortened-url" class="text-center w-50"
+      style="color: #0ABAB5; border: 1px solid #0ABAB5; border-radius: 10px">
+    <button class="btn btn-outline-success" onclick="copy()">Copy</button>
   </h2>
 </div>
 
