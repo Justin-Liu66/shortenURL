@@ -10,15 +10,14 @@ Short-URL-Generator 短網址產生器幫你畫繁為簡!
 ### 功能
 
 - 輸入網址轉換成短網址
-(若該網址為第一次輸入)
 ![](./public/image/transform-first-time.jpg)
-(若該網址曾輸入過)
+(若該網址曾經轉換過)
 ![](./public/image/ever-transformed.jpg)
-
 - 若輸入的網址有誤則跳出提示
+![](./public/image/wrongURL.jpg)
 - 點擊Copy按鈕一鍵複製短網址
+![](./public/image/copy.jpg)
 - 透過短網址能夠轉址到原網址
-
 
 ## 開始使用
 
