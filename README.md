@@ -1,18 +1,22 @@
 # Short-URL-Generator 短網址產生器
 
-![Home page about Restaurant List](./public/image/S3.A8(revised).jpg)
+![Home page about Short-URL-Generator](./public/image/Short-URL-Generator.jpg)
 
 ## 介紹
 
-紀錄屬於自己的餐廳清單，可以瀏覽、新增、編輯餐廳、查看詳細資訊、甚至連結到地圖。
+原先的網址有夠長有夠複雜而不滿意嗎? 
+Short-URL-Generator 短網址產生器幫你畫繁為簡!
 
 ### 功能
 
-- 查看所有餐廳
-- 選擇名字、類別、或地區來排列所有餐廳
-- 瀏覽餐廳的詳細資訊
-- 連結餐廳的地址到 Google 地圖
-- 搜尋特定餐廳
+- 輸入網址轉換成短網址
+![](./public/image/transform-first-time.jpg)
+![](./public/image/ever-transformed.jpg)
+
+- 若輸入的網址有誤則跳出提示
+- 點擊Copy按鈕一鍵複製短網址
+- 透過短網址能夠轉址到原網址
+
 
 ## 開始使用
 
@@ -44,8 +48,9 @@
 
 ## 開發工具
 
-- Node.js 10.15.0
-- Express 4.16.4
-- Express-Handlebars 3.0.0
+- Node.js 14.16.0
+- Express 4.17.1
+- Express-Handlebars 4.0.2
 - Bootstrap 5.2.2
-- Font-awesome 5.8.1
+- MongoDB
+- mongoose 5.9.7
