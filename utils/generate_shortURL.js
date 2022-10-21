@@ -1,4 +1,5 @@
-function generateShortURL(lengthOfShortURL) { //params: input the length of shortURL ruled by the project requirement
+//params: input the length of shortURL ruled by the project requirement
+function generateShortURL(lengthOfShortURL) {
 
   //step1: list the array consisting all possible characters
   const possibleNumbers = '0123456789'

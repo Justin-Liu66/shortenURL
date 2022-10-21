@@ -1,8 +1,8 @@
 <!-- copy function -->
+<!-- reference: How To Copy to Clipboard-W3Schools -->
 <script>
   function copy() {
     const copyText = document.getElementById("shortened-url")
-    console.log(copyText)
     copyText.select();
     copyText.setSelectionRange(0, 99999)
 
@@ -11,7 +11,6 @@
     alert("Copied the url: " + copyText.value)
   }
 </script>
-
 
 <!-- situation: when input URL was transformed before -->
 {{#if data}}
@@ -45,7 +44,7 @@
 
 <!--homepage-->
 {{else}}
-<form action="/shortenURL" method="post" class="" style="margin-top: 100px">
+<form action="/" method="post" class="" style="margin-top: 100px">
   <div class="mb-3 d-flex flex-column align-items-center">
     <input type="string" class="form-control w-25 text-center" id="initURL" name="initURL" value="{{inputURL}}"
       placeholder="input URL here" aria-describedby="" required>
@@ -54,7 +53,7 @@
     <button type="submit" class="btn btn-outline-primary">Shorten</button>
   </div>
 
-  <!-- situation: when input URL is not fully-qualified -->
+  <!-- verify input: input URL has to be fully-qualified -->
   {{#if obj}}
   <div class="text-center" style="margin-top: 50px">
     <h1 style="color: #dc143c">Oops! Please input fully-qualified URL.</h1>
